@@ -1,0 +1,87 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+    --enlarge: scale(1.25);
+    --star-primary-color: gold;
+    --star-secondary-color: darkgoldenrod;
+}
+
+.raiting {
+    display: grid;
+    place-content: center;
+}
+
+.raiting__group {
+    display: grid;
+    grid-auto-flow: column;
+    gap: 4px;
+}
+
+.raiting__group__small {
+    @apply raiting__group;
+    font-size: 16px;
+}
+
+.raiting__group__medium {
+    @apply raiting__group;
+    font-size: 24px;
+}
+.raiting__group__large {
+    @apply raiting__group;
+    font-size: 32px;
+}
+
+.star {
+    @apply cursor-pointer;
+
+    align-items: center;
+    appearance: none;
+    display: grid;
+    font: inherit;
+    justify-items: center;
+    margin: 0;
+    place-content: center;
+    position: relative;
+}
+
+.star__small {
+    @apply star;
+    width: 16px;
+}
+
+.star__medium {
+    @apply star;
+    width: 24px;
+}
+.star__large {
+    @apply star;
+    width: 32px;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+    .star {
+        transition: all 0.25s;
+    }
+
+    .star:before,
+    .star:after {
+        transition: all 0.25s;
+    }
+}
+
+.star:before,
+.star:after {
+    color: var(--star-primary-color);
+    position: absolute;
+}
+
+.star:before {
+    content: "☆";
+}
+
+.star:checked:before,
+.star:has(~ .star:checked):before {
+    content: "★";
+}
